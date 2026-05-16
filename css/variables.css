@@ -1,0 +1,149 @@
+/* ==============================================
+   CSS VARIABLES — Design Tokens
+   All colors, spacing, typography defined here.
+   Modify this file to retheme the entire site.
+   ============================================== */
+
+:root {
+  /* ─── Brand Colors ─── */
+  --accent:          #5DE8FF;   /* Cyan blue — primary accent */
+  --accent-2:        #A78BFA;   /* Violet — secondary accent  */
+  --accent-glow:     rgba(93, 232, 255, 0.25);
+  --accent-2-glow:   rgba(167, 139, 250, 0.2);
+
+  /* ─── Telegram Brand ─── */
+  --telegram:        #2AABEE;
+  --telegram-dark:   #1a8fc4;
+
+  /* ─── Typography ─── */
+  --font-display:   'Orbitron', 'Courier New', monospace;
+  --font-body:      'Syne', system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', 'Courier New', monospace;
+
+  /* ─── Font Sizes (clamp for fluid typography) ─── */
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-lg:   1.125rem;
+  --fs-xl:   1.25rem;
+  --fs-2xl:  1.5rem;
+  --fs-3xl:  clamp(1.75rem, 3vw, 2.25rem);
+  --fs-4xl:  clamp(2rem, 4vw, 3rem);
+  --fs-hero: clamp(2.8rem, 7vw, 6rem);
+
+  /* ─── Spacing ─── */
+  --space-xs:   0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+  --space-4xl:  6rem;
+  --space-5xl:  8rem;
+
+  /* ─── Layout ─── */
+  --container:      1200px;
+  --nav-height:     72px;
+  --border-radius:  8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+
+  /* ─── Transitions ─── */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ─── Z-Index Scale ─── */
+  --z-base:       1;
+  --z-card:       10;
+  --z-nav:        100;
+  --z-mobile-menu:110;
+  --z-modal:      200;
+  --z-preloader:  300;
+  --z-scroll-top: 150;
+}
+
+/* =============================================
+   DARK THEME (Default)
+   ============================================= */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary:     #080b0f;
+  --bg-secondary:   #0d1117;
+  --bg-tertiary:    #111827;
+  --bg-card:        #0f1923;
+  --bg-glass:       rgba(13, 17, 23, 0.8);
+  --bg-glass-light: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --text-primary:   #f0f4f8;
+  --text-secondary: #8892a4;
+  --text-muted:     #4a5568;
+
+  /* Borders */
+  --border-color:   rgba(255, 255, 255, 0.08);
+  --border-accent:  rgba(93, 232, 255, 0.3);
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-accent: 0 0 30px rgba(93, 232, 255, 0.2);
+
+  /* Nav */
+  --nav-bg:     rgba(8, 11, 15, 0.85);
+
+  /* Hero grid */
+  --grid-color: rgba(93, 232, 255, 0.06);
+
+  /* Scrollbar */
+  --scrollbar-track: #0d1117;
+  --scrollbar-thumb: #2d3748;
+  --scrollbar-hover: #4a5568;
+}
+
+/* =============================================
+   LIGHT THEME
+   ============================================= */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary:     #f8fafc;
+  --bg-secondary:   #f1f5f9;
+  --bg-tertiary:    #e2e8f0;
+  --bg-card:        #ffffff;
+  --bg-glass:       rgba(255, 255, 255, 0.85);
+  --bg-glass-light: rgba(0, 0, 0, 0.04);
+
+  /* Text */
+  --text-primary:   #0d1117;
+  --text-secondary: #4a5568;
+  --text-muted:     #94a3b8;
+
+  /* Borders */
+  --border-color:   rgba(0, 0, 0, 0.1);
+  --border-accent:  rgba(29, 78, 216, 0.3);
+
+  /* Accent override for light mode */
+  --accent:         #0ea5e9;
+  --accent-2:       #7c3aed;
+  --accent-glow:    rgba(14, 165, 233, 0.15);
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.15);
+  --shadow-accent: 0 0 30px rgba(14, 165, 233, 0.15);
+
+  /* Nav */
+  --nav-bg:     rgba(248, 250, 252, 0.9);
+
+  /* Hero grid */
+  --grid-color: rgba(14, 165, 233, 0.08);
+
+  /* Scrollbar */
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+  --scrollbar-hover: #64748b;
+}

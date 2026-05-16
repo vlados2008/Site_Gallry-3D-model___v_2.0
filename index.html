@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- =============================================
+       META & SEO
+  ============================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>BLND3R — 3D Artist Portfolio</title>
+  <meta name="description" content="Professional 3D artist portfolio. Characters, vehicles, weapons, buildings and sci-fi models crafted in Blender." />
+  <meta name="keywords" content="3D artist, Blender, 3D models, portfolio, characters, vehicles, sci-fi, CGI" />
+  <meta name="author" content="3D Artist" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BLND3R — 3D Artist Portfolio" />
+  <meta property="og:description" content="Professional 3D models created in Blender. Explore my portfolio of characters, vehicles, sci-fi and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourportfolio.com" />
+  <meta property="og:image" content="assets/images/og-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BLND3R — 3D Artist Portfolio" />
+  <meta name="twitter:description" content="Professional 3D models crafted in Blender." />
+  <meta name="twitter:image" content="assets/images/og-preview.jpg" />
+
+  <!-- Favicon (inline SVG as data URI for portability) -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets (loaded in order) -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+  <!-- =============================================
+       PRELOADER
+  ============================================= -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__logo">BLND3R</div>
+      <div class="preloader__bar">
+        <div class="preloader__fill" id="preloaderFill"></div>
+      </div>
+      <div class="preloader__percent" id="preloaderPercent">0%</div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       HEADER / NAV
+  ============================================= -->
+  <header class="header" id="header">
+    <nav class="nav container">
+
+      <!-- Logo -->
+      <a href="#hero" class="nav__logo" aria-label="BLND3R Home">
+        <span class="nav__logo-text">BLND3R</span>
+        <span class="nav__logo-dot"></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav__links" id="navLinks" role="navigation" aria-label="Main navigation">
+        <li><a href="#hero"     class="nav__link" data-section="hero">Home</a></li>
+        <li><a href="#gallery"  class="nav__link" data-section="gallery">Gallery</a></li>
+        <li><a href="#about"    class="nav__link" data-section="about">About</a></li>
+        <li><a href="#contact"  class="nav__link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav__controls">
+        <!-- Theme Toggle -->
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle light/dark theme"
+          title="Toggle theme"
+        >
+          <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">☽</span>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          class="nav__hamburger"
+          id="hamburger"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu__links">
+      <li><a href="#hero"    class="mobile-menu__link" data-section="hero">Home</a></li>
+      <li><a href="#gallery" class="mobile-menu__link" data-section="gallery">Gallery</a></li>
+      <li><a href="#about"   class="mobile-menu__link" data-section="about">About</a></li>
+      <li><a href="#contact" class="mobile-menu__link" data-section="contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__footer">
+      <span class="mobile-menu__tag">3D Artist · Blender</span>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================= -->
+  <main>
+
+    <!-- ==================
+         HERO SECTION
+    =================== -->
+    <section class="hero" id="hero">
+
+      <!-- Animated background grid -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <canvas class="hero__particles" id="heroParticles"></canvas>
+      </div>
+
+      <div class="container hero__content">
+
+        <!-- Eyebrow label -->
+        <p class="hero__eyebrow reveal-fade">
+          <span class="hero__eyebrow-line"></span>
+          3D Artist & Blender Creator
+          <span class="hero__eyebrow-line"></span>
+        </p>
+
+        <!-- Main heading -->
+        <h1 class="hero__title reveal-up">
+          <span class="hero__title-line">Crafting</span>
+          <span class="hero__title-line hero__title-line--accent">Digital Worlds</span>
+          <span class="hero__title-line">In 3D</span>
+        </h1>
+
+        <!-- Sub description -->
+        <p class="hero__desc reveal-fade reveal-fade--delay">
+          I create detailed, production-ready 3D models in Blender — from
+          characters and vehicles to sci-fi environments. Every polygon tells a story.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero__cta reveal-up reveal-up--delay">
+          <a href="#gallery" class="btn btn--primary">
+            <span>Explore Gallery</span>
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn--ghost">
+            <span>Contact Me</span>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero__stats reveal-fade reveal-fade--delay2">
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="40">0</span>
+            <span class="hero__stat-label">Models Created</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="3">0</span>
+            <span class="hero__stat-label">Years Experience</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="6">0</span>
+            <span class="hero__stat-label">Categories</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-text">Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+
+    </section>
+
+    <!-- ==================
+         GALLERY SECTION
+    =================== -->
+    <section class="gallery section" id="gallery">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section__header reveal-up">
+          <p class="section__eyebrow">Portfolio</p>
+          <h2 class="section__title">3D Model <span class="accent">Gallery</span></h2>
+          <p class="section__desc">Browse through my collection of handcrafted 3D models, each built with attention to detail.</p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter reveal-fade" role="tablist" aria-label="Filter by category">
+          <button class="filter__btn filter__btn--active" data-filter="all" role="tab" aria-selected="true">
+            All
+          </button>
+          <button class="filter__btn" data-filter="characters" role="tab" aria-selected="false">
+            Characters
+          </button>
+          <button class="filter__btn" data-filter="vehicles" role="tab" aria-selected="false">
+            Vehicles
+          </button>
+          <button class="filter__btn" data-filter="weapons" role="tab" aria-selected="false">
+            Weapons
+          </button>
+          <button class="filter__btn" data-filter="buildings" role="tab" aria-selected="false">
+            Buildings
+          </button>
+          <button class="filter__btn" data-filter="scifi" role="tab" aria-selected="false">
+            Sci-Fi
+          </button>
+          <button class="filter__btn" data-filter="other" role="tab" aria-selected="false">
+            Other
+          </button>
+        </div>
+
+        <!-- Model Cards Grid -->
+        <div class="gallery__grid" id="galleryGrid">
+
+          <!-- Card 01 — Character -->
+          <article class="model-card reveal-up" data-category="characters">
+            <div class="model-card__media">
+              <img src="assets/images/model-01-cyber-warrior.svg" alt="Cyber Warrior" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--characters">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="22" r="12" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M18 68c0-12 10-20 22-20s22 8 22 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M18 42l-6 14M62 42l6 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Characters</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="1" aria-label="View Cyber Warrior details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Cyber Warrior</h3>
+              <p class="model-card__desc">High-poly futuristic soldier with modular armor, procedural textures and rig-ready topology.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">High-Poly</span>
+                <span class="model-card__tag">Rigged</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02 — Vehicle -->
+          <article class="model-card reveal-up reveal-up--d1" data-category="vehicles">
+            <div class="model-card__media">
+              <img src="assets/images/model-02-neon-cruiser.svg" alt="Neon Cruiser" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--vehicles">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="32" width="56" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M20 32l8-14h24l8 14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="24" cy="58" r="7" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="56" cy="58" r="7" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Vehicles</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="2" aria-label="View Neon Cruiser details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Neon Cruiser</h3>
+              <p class="model-card__desc">Cyberpunk-inspired sports car with glowing underglow, PBR materials and detailed interior.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">PBR</span>
+                <span class="model-card__tag">Animated</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03 — Weapon -->
+          <article class="model-card reveal-up reveal-up--d2" data-category="weapons">
+            <div class="model-card__media">
+              <img src="assets/images/model-03-plasma-rifle.svg" alt="Plasma Rifle" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--weapons">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 44l28-28 8 8-4 4 10 10-4 4 4 4-14 14-8-8-4 4-8-8 4-4-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M54 26l8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Weapons</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="3" aria-label="View Plasma Rifle details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Plasma Rifle</h3>
+              <p class="model-card__desc">Sci-fi energy weapon with procedural glow effects, worn metal textures and ejectable magazine.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Game-Ready</span>
+                <span class="model-card__tag">Low-Poly</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04 — Building -->
+          <article class="model-card reveal-up reveal-up--d1" data-category="buildings">
+            <div class="model-card__media">
+              <img src="assets/images/model-04-tokyo-highrise.svg" alt="Tokyo Highrise" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--buildings">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="22" y="20" width="36" height="48" stroke="currentColor" stroke-width="1.5"/>
+                  <rect x="28" y="28" width="8" height="8" stroke="currentColor" stroke-width="1"/>
+                  <rect x="44" y="28" width="8" height="8" stroke="currentColor" stroke-width="1"/>
+                  <rect x="28" y="44" width="8" height="8" stroke="currentColor" stroke-width="1"/>
+                  <rect x="44" y="44" width="8" height="8" stroke="currentColor" stroke-width="1"/>
+                  <rect x="34" y="56" width="12" height="12" stroke="currentColor" stroke-width="1"/>
+                  <path d="M22 20L40 10l18 10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Buildings</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="4" aria-label="View Tokyo Highrise details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Tokyo Highrise</h3>
+              <p class="model-card__desc">Detailed urban skyscraper with night lighting, reflective glass facade and modular floor design.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Modular</span>
+                <span class="model-card__tag">Night-Lit</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 05 — Sci-Fi -->
+          <article class="model-card reveal-up reveal-up--d2" data-category="scifi">
+            <div class="model-card__media">
+              <img src="assets/images/model-05-orbital-station.svg" alt="Orbital Station" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--scifi">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="40,12 62,28 62,52 40,68 18,52 18,28" stroke="currentColor" stroke-width="1.5"/>
+                  <polygon points="40,24 52,32 52,48 40,56 28,48 28,32" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+                  <circle cx="40" cy="40" r="6" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Sci-Fi</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="5" aria-label="View Space Station details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Orbital Station</h3>
+              <p class="model-card__desc">Modular space station with docking bays, solar panels, procedural hull damage and interior rooms.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Modular</span>
+                <span class="model-card__tag">High-Poly</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 06 — Character -->
+          <article class="model-card reveal-up" data-category="characters">
+            <div class="model-card__media">
+              <img src="assets/images/model-06-android-pilot.svg" alt="Android Pilot" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--characters">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="22" r="12" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M20 68c0-12 10-20 20-20s20 8 20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M28 50l-8 6M52 50l8 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M32 40l-4 6h24l-4-6" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Characters</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="6" aria-label="View Android Pilot details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Android Pilot</h3>
+              <p class="model-card__desc">Humanoid android character with exposed mechanical joints, flight suit and face visor with HUD.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Rigged</span>
+                <span class="model-card__tag">Textured</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 07 — Sci-Fi -->
+          <article class="model-card reveal-up reveal-up--d1" data-category="scifi">
+            <div class="model-card__media">
+              <img src="assets/images/model-07-recon-drone.svg" alt="Recon Drone" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--scifi">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="40" cy="40" rx="28" ry="10" stroke="currentColor" stroke-width="1.5"/>
+                  <ellipse cx="40" cy="38" rx="14" ry="10" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="40" cy="38" r="5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 40l-6 4M68 40l6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Sci-Fi</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="7" aria-label="View Recon Drone details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Recon Drone</h3>
+              <p class="model-card__desc">Autonomous surveillance drone with scanning lasers, rotor animation and weathered chassis.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Animated</span>
+                <span class="model-card__tag">Game-Ready</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 08 — Other -->
+          <article class="model-card reveal-up reveal-up--d2" data-category="other">
+            <div class="model-card__media">
+              <img src="assets/images/model-08-crystal.svg" alt="Crystal Formation" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--other">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M40 14l6 18h20l-16 12 6 18-16-12-16 12 6-18L14 32h20z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Other</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="8" aria-label="View Crystal Formation details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Crystal Formation</h3>
+              <p class="model-card__desc">Procedural crystal cluster with subsurface scattering, caustics lighting and volumetric glow.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">Procedural</span>
+                <span class="model-card__tag">Cycles</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 09 — Vehicles -->
+          <article class="model-card reveal-up" data-category="vehicles">
+            <div class="model-card__media">
+              <img src="assets/images/model-09-stealth-jet.svg" alt="Stealth Jet" class="model-card__img" loading="lazy" />
+              <div class="model-card__placeholder model-card__placeholder--vehicles">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 50L40 18l30 32" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <rect x="30" y="38" width="20" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10 50h60" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M20 50V66M60 50V66" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="20" cy="60" r="4" stroke="currentColor" stroke-width="1"/>
+                  <circle cx="60" cy="60" r="4" stroke="currentColor" stroke-width="1"/>
+                </svg>
+              </div>
+              <span class="model-card__category">Vehicles</span>
+              <div class="model-card__overlay">
+                <button class="model-card__view-btn" data-id="9" aria-label="View Fighter Jet details">
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="model-card__body">
+              <h3 class="model-card__title">Stealth Jet</h3>
+              <p class="model-card__desc">Military stealth aircraft with folding wings, afterburner effect, cockpit interior and landing gear.</p>
+              <div class="model-card__meta">
+                <span class="model-card__tag">High-Poly</span>
+                <span class="model-card__tag">PBR</span>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /gallery__grid -->
+
+        <!-- No results message -->
+        <div class="gallery__empty" id="galleryEmpty" aria-live="polite">
+          <p>No models found in this category yet.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================
+         ABOUT SECTION
+    =================== -->
+    <section class="about section" id="about">
+      <div class="container about__container">
+
+        <!-- Visual side -->
+        <div class="about__visual reveal-fade">
+          <div class="about__avatar-wrap">
+            <div class="about__avatar">
+              <!-- Animated 3D icon placeholder -->
+              <svg class="about__avatar-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="90" stroke="var(--accent)" stroke-width="1" stroke-dasharray="8 6"/>
+                <circle cx="100" cy="100" r="70" stroke="var(--accent)" stroke-width="0.5" stroke-dasharray="4 10" opacity="0.5"/>
+                <polygon points="100,30 162,65 162,135 100,170 38,135 38,65" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                <polygon points="100,50 145,75 145,125 100,150 55,125 55,75" stroke="var(--accent-2)" stroke-width="1" fill="none" opacity="0.7"/>
+                <circle cx="100" cy="100" r="20" stroke="var(--accent)" stroke-width="2" fill="var(--accent)" fill-opacity="0.1"/>
+                <path d="M100 80v40M80 100h40" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="about__badge">
+              <span class="about__badge-dot"></span>
+              Available for projects
+            </div>
+          </div>
+
+          <!-- Skills chips -->
+          <div class="about__skills">
+            <span class="skill-chip">Blender</span>
+            <span class="skill-chip">Cycles Render</span>
+            <span class="skill-chip">EEVEE</span>
+            <span class="skill-chip">UV Mapping</span>
+            <span class="skill-chip">Rigging</span>
+            <span class="skill-chip">PBR Materials</span>
+            <span class="skill-chip">Geometry Nodes</span>
+            <span class="skill-chip">Sculpting</span>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="about__content reveal-up">
+          <div class="section__header section__header--left">
+            <p class="section__eyebrow">About Me</p>
+            <h2 class="section__title">The Artist <span class="accent">Behind</span> The Models</h2>
+          </div>
+
+          <div class="about__text">
+            <p>
+              I'm a self-taught 3D artist passionate about creating hyper-detailed digital worlds.
+              My journey began with curiosity about how movies and games were made — today I craft
+              those same worlds myself using Blender.
+            </p>
+            <p>
+              My focus is on <strong>sci-fi aesthetics, characters, and hard-surface modeling</strong>.
+              I love the challenge of making something purely digital feel physically real —
+              every scratch, every weld, every light bounce matters.
+            </p>
+            <p>
+              When I'm not modeling, I study concept art, follow CGI breakdowns, and constantly
+              experiment with new Blender techniques. Creating is not just a skill — it's how I think.
+            </p>
+          </div>
+
+          <!-- Feature list -->
+          <ul class="about__features">
+            <li class="about__feature">
+              <span class="about__feature-icon">◈</span>
+              <span>Production-ready topology and UV maps</span>
+            </li>
+            <li class="about__feature">
+              <span class="about__feature-icon">◈</span>
+              <span>PBR materials compatible with major engines</span>
+            </li>
+            <li class="about__feature">
+              <span class="about__feature-icon">◈</span>
+              <span>Detailed scene composition and lighting</span>
+            </li>
+            <li class="about__feature">
+              <span class="about__feature-icon">◈</span>
+              <span>Custom rigs and procedural animations</span>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================
+         CONTACT / TELEGRAM SECTION
+    =================== -->
+    <section class="contact section" id="contact">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section__header reveal-up">
+          <p class="section__eyebrow">Get In Touch</p>
+          <h2 class="section__title">Let's <span class="accent">Connect</span></h2>
+          <p class="section__desc">Have a project in mind? Want to commission a model? Reach me directly on Telegram.</p>
+        </div>
+
+        <!-- Telegram Block -->
+        <div class="telegram-block reveal-up">
+
+          <!-- Left: info -->
+          <div class="telegram-block__info">
+            <div class="telegram-block__icon-wrap">
+              <!-- Telegram SVG logo -->
+              <svg class="telegram-block__tg-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="24" fill="url(#tg-gradient)"/>
+                <defs>
+                  <linearGradient id="tg-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2AABEE"/>
+                    <stop offset="1" stop-color="#229ED9"/>
+                  </linearGradient>
+                </defs>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 23.8c6.5-2.8 16.2-7 17.7-7.6 5.3-2.2 6.4-.9 5.7 3.2-.5 2.9-2 11.3-2.5 14-.3 1.8-1.3 2.3-2.7 1.4-1.1-.7-4.6-3.1-5.4-3.7-.7-.5-.5-1.3.4-2 .6-.5 4.7-4.4 5.1-4.8.3-.3 0-.7-.5-.4-.5.3-6.2 3.9-7.7 4.9-1.2.8-2.4.7-3.5.3L14 28c-1.4-.5-1.3-1.3.5-2.2z" fill="white"/>
+              </svg>
+            </div>
+
+            <h3 class="telegram-block__title">@vlad_sb08</h3>
+            <p class="telegram-block__text">
+              The fastest way to reach me. I typically respond within a few hours.
+              Commission inquiries, collaborations, and feedback are all welcome.
+            </p>
+
+            <!-- CTA Button -->
+            <a
+              href="https://t.me/vlad_sb08"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--telegram"
+              aria-label="Open Telegram chat"
+            >
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+              </svg>
+              <span>Open in Telegram</span>
+            </a>
+
+            <!-- Contact chips -->
+            <div class="telegram-block__chips">
+              <span class="contact-chip">🚀 Fast replies</span>
+              <span class="contact-chip">🌍 Remote work</span>
+              <span class="contact-chip">💎 Custom orders</span>
+            </div>
+          </div>
+
+          <!-- Right: QR Code -->
+          <div class="telegram-block__qr">
+            <div class="qr-frame">
+              <div class="qr-frame__label">Scan to open Telegram</div>
+              <!-- QR Code placeholder — replace with real QR image -->
+              <div class="qr-frame__image" id="qrCode">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Simplified QR-like pattern -->
+                  <rect x="10" y="10" width="30" height="30" fill="none" stroke="currentColor" stroke-width="4"/>
+                  <rect x="60" y="10" width="30" height="30" fill="none" stroke="currentColor" stroke-width="4"/>
+                  <rect x="10" y="60" width="30" height="30" fill="none" stroke="currentColor" stroke-width="4"/>
+                  <rect x="17" y="17" width="16" height="16" fill="currentColor"/>
+                  <rect x="67" y="17" width="16" height="16" fill="currentColor"/>
+                  <rect x="17" y="67" width="16" height="16" fill="currentColor"/>
+                  <!-- Data cells -->
+                  <rect x="50" y="50" width="6" height="6" fill="currentColor"/>
+                  <rect x="62" y="50" width="6" height="6" fill="currentColor"/>
+                  <rect x="74" y="50" width="6" height="6" fill="currentColor"/>
+                  <rect x="50" y="62" width="6" height="6" fill="currentColor"/>
+                  <rect x="74" y="62" width="6" height="6" fill="currentColor"/>
+                  <rect x="50" y="74" width="6" height="6" fill="currentColor"/>
+                  <rect x="62" y="74" width="6" height="6" fill="currentColor"/>
+                  <rect x="74" y="74" width="6" height="6" fill="currentColor"/>
+                  <rect x="56" y="56" width="6" height="6" fill="currentColor"/>
+                  <rect x="68" y="56" width="6" height="6" fill="currentColor"/>
+                  <rect x="62" y="62" width="6" height="6" fill="currentColor"/>
+                  <rect x="56" y="68" width="6" height="6" fill="currentColor"/>
+                  <rect x="68" y="68" width="6" height="6" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="qr-frame__hint">Replace with your real QR code</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <div class="container footer__container">
+
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">BLND3R</a>
+        <p class="footer__tagline">Crafting Digital Worlds In 3D</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#hero"    class="footer__link">Home</a>
+        <a href="#gallery" class="footer__link">Gallery</a>
+        <a href="#about"   class="footer__link">About</a>
+        <a href="#contact" class="footer__link">Contact</a>
+      </nav>
+
+      <div class="footer__social">
+        <a href="https://t.me/vlad_sb08" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">© <span id="currentYear"></span> BLND3R. All rights reserved.</p>
+      <p class="footer__made">Made with Blender & passion ◈</p>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       SCROLL-TO-TOP BUTTON
+  ============================================= -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- =============================================
+       MODEL DETAIL MODAL
+  ============================================= -->
+  <div class="modal" id="modelModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__content">
+      <button class="modal__close" id="modalClose" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="modal__preview" id="modalPreview"></div>
+      <div class="modal__body">
+        <span class="modal__category" id="modalCategory"></span>
+        <h2 class="modal__title" id="modalTitle"></h2>
+        <p class="modal__desc" id="modalDesc"></p>
+        <div class="modal__tags" id="modalTags"></div>
+        <a href="https://t.me/vlad_sb08" target="_blank" rel="noopener noreferrer" class="btn btn--primary modal__cta">
+          Commission This Model
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       JAVASCRIPT (Loaded in correct order)
+  ============================================= -->
+  <script src="js/data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/counter.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+/* ==============================================
+   ANIMATIONS — Keyframes & Reveal Classes
+   ============================================== */
+
+/* ─────────────────────────────────────────────
+   REVEAL ON SCROLL — Initial Hidden State
+───────────────────────────────────────────── */
+.reveal-up,
+.reveal-fade {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-up {
+  transform: translateY(32px);
+}
+
+.reveal-fade {
+  transform: translateY(16px);
+}
+
+/* Delay variants */
+.reveal-up--delay,
+.reveal-fade--delay {
+  transition-delay: 0.15s;
+}
+
+.reveal-up--delay2,
+.reveal-fade--delay2 {
+  transition-delay: 0.3s;
+}
+
+.reveal-up--d1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-up--d2 {
+  transition-delay: 0.2s;
+}
+
+/* Visible state (added by JS IntersectionObserver) */
+.reveal-up.is-visible,
+.reveal-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+
+/* Floating glow orbs */
+@keyframes float-glow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.96); }
+}
+
+/* Pulsing dot (nav logo, about badge) */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(93, 232, 255, 0.5); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(93, 232, 255, 0); }
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-scroll {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Preloader glitch */
+@keyframes glitch {
+  0%, 90%, 100% {
+    text-shadow: none;
+    transform: none;
+  }
+  91% {
+    text-shadow: -2px 0 var(--accent-2), 2px 0 var(--accent);
+    transform: skewX(-1deg);
+  }
+  93% {
+    text-shadow: 2px 0 var(--accent-2), -2px 0 var(--accent);
+    transform: skewX(1deg);
+  }
+  95% {
+    text-shadow: none;
+    transform: none;
+  }
+}
+
+/* Spinning border for avatar */
+@keyframes spin-border {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Floating + subtle rotation for avatar SVG */
+@keyframes float-rotate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%       { transform: translateY(-10px) rotate(3deg); }
+  75%       { transform: translateY(5px) rotate(-3deg); }
+}
+
+/* Page fade in */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in general */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Count up number glow */
+@keyframes num-glow {
+  0%, 100% { text-shadow: none; }
+  50%       { text-shadow: 0 0 20px var(--accent-glow); }
+}
+
+/* Filter button active pulse */
+@keyframes filter-active {
+  0%   { box-shadow: 0 0 0 0 var(--accent-glow); }
+  100% { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* ─────────────────────────────────────────────
+   BODY LOADED — Trigger page entrance
+───────────────────────────────────────────── */
+body.is-loaded main {
+  animation: page-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─────────────────────────────────────────────
+   HERO TITLE LINES — Staggered appearance
+───────────────────────────────────────────── */
+.hero__title-line {
+  opacity: 0;
+  transform: translateY(24px);
+  display: block;
+}
+
+body.is-loaded .hero__title-line:nth-child(1) {
+  animation: page-in 0.7s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+body.is-loaded .hero__title-line:nth-child(2) {
+  animation: page-in 0.7s 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+body.is-loaded .hero__title-line:nth-child(3) {
+  animation: page-in 0.7s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─────────────────────────────────────────────
+   CARD FILTER TRANSITION
+───────────────────────────────────────────── */
+.model-card {
+  /* Smooth show/hide during filtering */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.model-card.is-hidden {
+  display: none;
+}
+
+.model-card.is-filtering-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.model-card.is-filtering-in {
+  animation: fade-in 0.4s ease forwards;
+}
+
+/* ─────────────────────────────────────────────
+   GLASSMORPHISM GLOW BORDER (hover micro-effect)
+───────────────────────────────────────────── */
+.model-card:hover {
+  --glow-border: 1px solid rgba(93, 232, 255, 0.4);
+}
+
+/* ─────────────────────────────────────────────
+   THEME TRANSITION — Smooth page re-color
+───────────────────────────────────────────── */
+body,
+.header,
+.model-card,
+.filter__btn,
+.about__feature,
+.telegram-block,
+.qr-frame,
+.footer,
+.modal__content {
+  transition-property: background-color, color, border-color;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

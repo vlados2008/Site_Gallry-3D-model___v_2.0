@@ -1,0 +1,323 @@
+/* ==============================================
+   RESPONSIVE — Mobile, Tablet, Desktop
+   Breakpoints:
+     mobile:  < 640px
+     tablet:  640px – 1024px
+     desktop: > 1024px
+   ============================================== */
+
+/* ─────────────────────────────────────────────
+   TABLET  ( ≤ 1024px )
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Container padding */
+  .container {
+    padding-inline: var(--space-lg);
+  }
+
+  /* Gallery: 2 columns on tablet */
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About: stack vertically */
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .about__visual {
+    align-items: center;
+  }
+
+  .about__content .section__header {
+    text-align: center;
+  }
+
+  .about__content .section__eyebrow {
+    justify-content: center;
+  }
+
+  /* Telegram block: stack vertically */
+  .telegram-block {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .telegram-block__qr {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Hero adjustments */
+  .hero__glow--1 {
+    width: 300px;
+    height: 300px;
+    right: -60px;
+  }
+
+  .hero__glow--2 {
+    width: 250px;
+    height: 250px;
+    left: -60px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE  ( ≤ 768px )
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Nav: show hamburger, hide desktop links */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Section spacing */
+  .section {
+    padding-block: var(--space-4xl);
+  }
+
+  /* Section titles */
+  .section__title {
+    font-size: var(--fs-3xl);
+  }
+
+  /* Hero */
+  .hero__title {
+    font-size: clamp(2.2rem, 10vw, 4rem);
+  }
+
+  .hero__desc {
+    font-size: var(--fs-base);
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__stats {
+    gap: var(--space-lg);
+  }
+
+  .hero__stat-num {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Gallery: single column */
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter: scrollable row */
+  .filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: var(--space-sm);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter__btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* About avatar */
+  .about__avatar {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about__avatar-svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  /* About features */
+  .about__feature {
+    font-size: var(--fs-xs);
+  }
+
+  /* Telegram block padding */
+  .telegram-block {
+    padding: var(--space-xl);
+  }
+
+  .telegram-block__title {
+    font-size: var(--fs-2xl);
+  }
+
+  /* QR code smaller on mobile */
+  .qr-frame__image {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Footer */
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+  }
+
+  .footer__nav {
+    justify-content: center;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Modal */
+  .modal {
+    padding: var(--space-md);
+    align-items: flex-end;
+  }
+
+  .modal__content {
+    border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+    max-height: 92svh;
+    overflow-y: auto;
+  }
+
+  /* Scroll to top button */
+  .scroll-top {
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Hero scroll indicator: hide on mobile */
+  .hero__scroll {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SMALL MOBILE  ( ≤ 400px )
+───────────────────────────────────────────── */
+@media (max-width: 400px) {
+
+  .container {
+    padding-inline: var(--space-md);
+  }
+
+  .hero__eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .telegram-block {
+    padding: var(--space-lg);
+  }
+
+  .btn--telegram {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Avatar smaller */
+  .about__avatar {
+    width: 180px;
+    height: 180px;
+  }
+
+  .about__avatar-svg {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   LARGE DESKTOP  ( ≥ 1280px )
+───────────────────────────────────────────── */
+@media (min-width: 1280px) {
+
+  /* Optionally extend max container */
+  .container {
+    padding-inline: var(--space-2xl);
+  }
+
+  /* Gallery: 3 columns already, keep it */
+
+  /* Extra padding on hero */
+  .hero__content {
+    padding-block: var(--space-5xl) var(--space-4xl);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   REDUCED MOTION — Accessibility
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero__glow--1,
+  .hero__glow--2,
+  .about__avatar-svg,
+  .hero__scroll,
+  .nav__logo-dot,
+  .about__badge-dot,
+  .preloader__logo {
+    animation: none !important;
+  }
+
+  .about__avatar::before {
+    animation: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   PRINT  — Remove decorative elements
+───────────────────────────────────────────── */
+@media print {
+
+  .header,
+  .hero__bg,
+  .hero__particles,
+  .hero__scroll,
+  .scroll-top,
+  .preloader,
+  .mobile-menu,
+  .modal {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  main {
+    padding-top: 0;
+  }
+}

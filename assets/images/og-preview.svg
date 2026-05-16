@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#080b0f"/>
+  <!-- Grid -->
+  <defs>
+    <pattern id="g" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#5DE8FF" stroke-width="0.5" opacity="0.08"/>
+    </pattern>
+    <radialGradient id="gl1" cx="80%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#5DE8FF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="gl2" cx="20%" cy="80%" r="40%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect width="1200" height="630" fill="url(#gl1)"/>
+  <rect width="1200" height="630" fill="url(#gl2)"/>
+  <!-- Logo -->
+  <text x="600" y="280" font-family="monospace" font-size="100" font-weight="900"
+        text-anchor="middle" fill="#5DE8FF" letter-spacing="16">BLND3R</text>
+  <!-- Subtitle -->
+  <text x="600" y="360" font-family="monospace" font-size="24"
+        text-anchor="middle" fill="#8892a4" letter-spacing="8">3D ARTIST PORTFOLIO</text>
+  <!-- Dot -->
+  <circle cx="600" cy="420" r="6" fill="#5DE8FF"/>
+</svg>
