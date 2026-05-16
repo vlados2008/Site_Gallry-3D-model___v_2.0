@@ -79,10 +79,10 @@
 
       <!-- Desktop Navigation Links -->
       <ul class="nav__links" id="navLinks" role="navigation" aria-label="Main navigation">
-        <li><a href="#hero"     class="nav__link" data-section="hero">Home</a></li>
-        <li><a href="#gallery"  class="nav__link" data-section="gallery">Gallery</a></li>
-        <li><a href="#about"    class="nav__link" data-section="about">About</a></li>
-        <li><a href="#contact"  class="nav__link" data-section="contact">Contact</a></li>
+        <li><a href="#hero"     class="nav__link" data-section="hero" data-i18n="nav.home">Home</a></li>
+        <li><a href="#gallery"  class="nav__link" data-section="gallery" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="#about"    class="nav__link" data-section="about" data-i18n="nav.about">About</a></li>
+        <li><a href="#contact"  class="nav__link" data-section="contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
 
       <!-- Right Controls -->
@@ -97,6 +97,9 @@
           <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
           <span class="theme-toggle__icon theme-toggle__icon--moon">☽</span>
         </button>
+
+        <!-- Lang Toggle -->
+        <div id="langSwitcher" class="lang-switcher"></div>
 
         <!-- Hamburger (mobile) -->
         <button
@@ -786,6 +789,7 @@
   <script src="js/animations.js"></script>
   <script src="js/counter.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 
 </body>
 </html>

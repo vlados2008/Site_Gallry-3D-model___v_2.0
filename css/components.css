@@ -413,7 +413,7 @@
 }
 
 /* Moon icon */
-.theme-toggle__icon--moon {
+.theme-toggle__icon--moon { 
   color: var(--accent-2);
 }
 
@@ -612,4 +612,42 @@
 
 .gallery__empty--visible {
   display: block;
+}
+
+/* ─────────────────────────────────────────────
+    LANGUAGE SWITCHER
+───────────────────────────────────────────── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Отступы между кнопками EN, RU, UA */
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass-light);
+  padding: 4px;
+  border-radius: 30px; /* Округлая капсула для кнопок */
+}
+
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 
+    color var(--transition-base), 
+    background var(--transition-base);
+}
+
+.lang-btn:hover {
+  color: var(--accent);
+}
+
+/* Стили для активного (выбранного) языка */
+.lang-btn--active {
+  background: var(--accent);
+  color: #000000; /* Цвет текста внутри активной кнопки (можно поменять под вашу тему) */
 }
